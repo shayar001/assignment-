@@ -1,0 +1,36 @@
+#!/bin/bash
+ls -t $@ | tail -n 1
+
+
+
+
+#!/bin/bash
+if [[-n $1]]; then
+        echo "This is funny"
+else
+        echo "This is NOT funny"
+
+fi
+
+
+
+
+#!/bin/bash
+time=$(date +%I)
+count=0
+while [ "$count" -lt "$time" ]; do
+        echo -ne "\a"
+        sleep 1 # sleep for one second
+        let count=count+1
+done
+sleep 3
+minute=$(date +%M)
+if [[ $minute -gt 0 && $minute -le 20 ]]; then
+     echo -ne "n/a"
+elif [[ $minute -gt 20  && $minute -le 40 ]]; then
+        echo -ne "\a"
+elif [[ $minute -gt 45 && $minute -lt 60 ]]; then
+        echo -ne '\a\a'
+else
+        echo "No Chime"
+fi
